@@ -1,13 +1,57 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Unittests For Gluon-nlp on AWS Batch'
+description: 'Execute unittest for current repo on AWS Batch'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  profile-name: 
+    description: 'profile name of aws account.'
+    required: false
+    default: None
+  region: 
+    description: 'nefault region when creating new connections. '
     required: true
-    default: 'World'
+    default: None
+  name: 
+    description: 'name of the job.'
+    required: false
+    default: 'dummy'
+  job-type: 
+    description: 'type of job to submit.'
+    required: true
+    default: 'g4dn.4x'
+  source-ref: 
+    description: 'ref in GluonNLP main github. e.g. master, refs/pull/500/head'
+    required: true
+    default: 'master'
+  work-dir: 
+    description: 'working directory inside the repo. e.g. scripts/preprocess'
+    required: true
+    default: 'scripts/preprocess'
+  saved-output: 
+    description: 'output to be saved, relative to working directory.'
+    required: true
+    default: '.'
+  save-path: 
+    description: 's3 path where files are saved.'
+    required: false
+    default: None
+  command: 
+    description: 'command to run'
+    required: true
+    default: 'git rev-parse HEAD | tee stdout.log'
+  remote: 
+    description: 'git repo address. https://github.com/dmlc/gluon-nlp'
+    required: true
+    default: 'https://github.com/dmlc/gluon-nlp' 
+  wait: 
+    description: 'block wait until the job completes.'
+    required: false
+    default: None
+  time-out: 
+    description: 'job timeout in seconds'
+    required: false
+    default: None    
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  batch-status: # id of output
+    description: 'The status of AWS Batch'
 runs:
   using: 'node12'
   main: 'index.js'
