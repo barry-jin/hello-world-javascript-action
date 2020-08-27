@@ -18,9 +18,14 @@ jobs:
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: Do some thing
-        run:
-          echo "This is for downloading" > script.log
+        run: |
+          expr 3 + 7 > math-homework.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: math-homework.txt
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
-          name: script.log
+          name: logs
