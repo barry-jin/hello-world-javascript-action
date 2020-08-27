@@ -22,4 +22,5 @@ jobs:
           echo "This is for downloading" > script.log
       - name: Download Artifact
         uses: actions/download-artifact@v2
-        
+        with:
+          script.log
