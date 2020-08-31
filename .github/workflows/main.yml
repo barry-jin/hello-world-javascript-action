@@ -18,7 +18,7 @@ jobs:
       - name: Get the output time
         run: |
           echo "The time was ${{ steps.hello.outputs.time }}"
-          echo ${GITHUB_REF} ${BRANCH_NAME}
+          echo ${BRANCH_NAME}
       - name: Do some thing
         run: |
           expr 3 + 7 > math-homework.txt
