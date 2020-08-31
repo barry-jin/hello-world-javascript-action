@@ -23,6 +23,7 @@ jobs:
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
       - name: Get the output time
+        if: !steps.extract_branch.outputs.branch.startsWith('PR-')
         run: |
           echo ${{ steps.extract_branch.outputs.branch }}
       - name: Do some thing
