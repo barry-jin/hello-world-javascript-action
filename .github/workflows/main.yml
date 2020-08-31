@@ -18,6 +18,7 @@ jobs:
       - name: Get the output time
         run: |
           echo "The time was ${{ steps.hello.outputs.time }}"
+          echo ${{ github.repository }}
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
