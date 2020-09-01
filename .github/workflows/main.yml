@@ -19,6 +19,7 @@ jobs:
         run: |
           echo "The time was ${{ steps.hello.outputs.time }}"
           echo ${{ github.repository }}
+          echo ${{ github.ref }}
           echo ${{ github.event.pull_request.head.repo.full_name }}
           echo ${{ github.event.pull_request.head.ref }}
           echo ${{ github.event.pull_request.base.ref }}
