@@ -14,6 +14,8 @@ try {
   // here1
 
   // here3
+
+  // here4
 } catch (error) {
   core.setFailed(error.message);
 }
