@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "The time was ${{ steps.hello.outputs.time }}"
           echo ${{ github.repository }}
-          echo ${{ github.event.pull_request.head.ref }}
+          echo ${{ github.event.pull_request.head }}
           echo ${{ github.event.pull_request.base.ref }}
           echo ${{ github.event.pull_request.number }}
       - name: Extract branch name
