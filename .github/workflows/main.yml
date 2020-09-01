@@ -28,6 +28,7 @@ jobs:
           echo ${{ github.event.pull_request_target.base.ref }}
           echo ${{ github.event.pull_request.number }}
           echo ${{ github.event.pull_request_target.number }}
+          echo ${{ github.event_name }}
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
