@@ -12,6 +12,8 @@ try {
   console.log(`The event payload: ${payload}`);
 
   // here1
+
+  // here3
 } catch (error) {
   core.setFailed(error.message);
 }
