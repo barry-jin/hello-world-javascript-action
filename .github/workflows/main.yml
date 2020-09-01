@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: [push, pull_request_target]
 
 jobs:
   hello_world_job:
@@ -20,10 +20,10 @@ jobs:
           echo "The time was ${{ steps.hello.outputs.time }}"
           echo ${{ github.repository }}
           echo ${{ github.ref }}
-          echo ${{ github.event.pull_request.head.repo.full_name }}
-          echo ${{ github.event.pull_request.head.ref }}
-          echo ${{ github.event.pull_request.base.ref }}
-          echo ${{ github.event.pull_request.number }}
+          echo ${{ github.event.pull_request_target.head.repo.full_name }}
+          echo ${{ github.event.pull_request_target.head.ref }}
+          echo ${{ github.event.pull_request_target.base.ref }}
+          echo ${{ github.event.pull_request_target.number }}
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
