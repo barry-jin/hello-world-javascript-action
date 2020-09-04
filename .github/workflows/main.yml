@@ -48,6 +48,7 @@ jobs:
           path: math-homework.txt
 
       - name: Create comment
+        if: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
         uses: peter-evans/create-or-update-comment@v1
         with:
           issue-number: ${{ github.event.number }}
