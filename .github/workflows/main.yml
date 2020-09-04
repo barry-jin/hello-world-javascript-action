@@ -46,3 +46,10 @@ jobs:
         with:
           name: logs
           path: math-homework.txt
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            The documentation website for preview: http://gluon-nlp-dev.s3-accelerate.amazonaws.com/PR#test/new-documentation-website/index.html
