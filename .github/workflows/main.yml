@@ -31,7 +31,7 @@ jobs:
           echo ${{ github.event.pull_request.number }}
           echo ${{ github.event.pull_request_target.number }}
           echo ${{ github.event_name }}
-          if [ ${{ github.event_name }} -eq "push" ]; then \
+          if [ "${{ github.event_name }}" -eq "push" ]; then \
               echo This is push; \
           else \
               echo This is pull request; \
