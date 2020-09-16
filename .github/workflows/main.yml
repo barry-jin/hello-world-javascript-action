@@ -1,8 +1,6 @@
 on: [push, pull_request_target]
 
 jobs:
-  env:
-    EVENT_NAME: ${{ github.event_name }}
   hello_world_job:
     runs-on: ubuntu-latest
     name: A job to say hello
@@ -33,11 +31,13 @@ jobs:
           echo ${{ github.event.pull_request.number }}
           echo ${{ github.event.pull_request_target.number }}
           echo ${{ github.event_name }}
-          if [ "$EVENT_NAME" -eq push ]; then \
+          if [ "$EVENT_NAME" == "push" ]; then \
               echo This is push; \
           else \
               echo This is pull request; \
           fi
+        env:
+          EVENT_NAME: ${{ github.event_name }}
 
       - name: Extract branch name
         shell: bash
