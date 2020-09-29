@@ -40,6 +40,26 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
 
+      - name: Checkout1
+        uses: actions/checkout@v2
+        with:
+          path: main
+        run: |
+          pwd
+          ls
+
+      - name: Checkout2
+        if: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: pr
+        run: |
+          pwd
+          ls
+
+
       - name: Extract branch name
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
