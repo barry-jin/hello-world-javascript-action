@@ -13,10 +13,10 @@ jobs:
 
       - name: Checkout3
         if: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
-          uses: actions/checkout@v2
-          with:
-            repository: ${{ github.event.pull_request.head.repo.full_name }}
-            ref: ${{ github.event.pull_request.head.ref }}
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Check pwd
         run: |
