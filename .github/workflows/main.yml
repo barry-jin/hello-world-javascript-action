@@ -8,7 +8,22 @@ jobs:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
+        if: ${{ github.event_name == 'push' }}
         uses: actions/checkout@v2
+
+      - name: Checkout3
+        if: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
+        uses: actions/checkout@v2
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request_target.head.ref }}
+
+      - name: Check pwd
+        run: |
+          pwd
+          ls
+          cat index.js
+
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
         id: hello
