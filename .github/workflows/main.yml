@@ -46,7 +46,7 @@ jobs:
           path: main
       - run: |
           pwd
-          ls
+          ls main
 
       - name: Checkout2
         if: ${{ github.event_name == 'pull_request' || github.event_name == 'pull_request_target' }}
@@ -57,7 +57,7 @@ jobs:
           path: pr
       - run: |
           pwd
-          ls
+          ls pr
 
 
       - name: Extract branch name
